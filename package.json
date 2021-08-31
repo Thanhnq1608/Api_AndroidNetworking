@@ -11,6 +11,6 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node api_service.js"
   }
 }
