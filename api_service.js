@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var express = require('express');
 var fileUpload = require("express-fileupload");
 var app = express();
-var port = 3001;
+const port = process.env.PORT || 3000;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 var host = '192.168.1.6';
