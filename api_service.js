@@ -29,6 +29,9 @@ con.connect(function (err) {
     else
         console.log("DB connection failed \n" + JSON.stringify(err, undefined, 2));
 });
+app.get("/",(req,res)=>{
+    res.send("Hello world");
+})
 
 // CRUD Product
 app.get('/getProd',getProd);
