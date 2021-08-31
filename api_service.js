@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var express = require('express');
 var fileUpload = require("express-fileupload");
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 var host = '192.168.1.6';
@@ -46,6 +46,6 @@ app.post('/changePass',changePass);
 app.post('/deleteUser',deleteUser);
 
 
-app.listen(port, host, () => {
+app.listen(port, () => {
     console.log('Server started on port 3000..');
 });
