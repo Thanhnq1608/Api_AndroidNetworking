@@ -31,16 +31,16 @@ con.connect(function (err) {
 });
 
 // CRUD Product
-app.get('/app/getProd',getProd);
-app.post('/app/insertProd',insertProd);
-app.put('/app/updateProd',updateProd);
-app.post('/app/deleteProd',deleteProd);
+app.get('/getProd',getProd);
+app.post('/insertProd',insertProd);
+app.put('/updateProd',updateProd);
+app.post('/deleteProd',deleteProd);
 // CRUD User
-app.get('/app/getUser',getUser);
-app.post('/app/insertUser',insertUser);
-app.put('/app/updateUser',updateUser);
-app.post('/app/changePass',changePass);
-app.post('/app/deleteUser',deleteUser);
+app.get('/getUser',getUser);
+app.post('/insertUser',insertUser);
+app.put('/updateUser',updateUser);
+app.post('/changePass',changePass);
+app.post('/deleteUser',deleteUser);
 
 
 app.listen(port, host, () => {
