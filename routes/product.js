@@ -7,7 +7,7 @@ module.exports = {
             var products = [];
             if (err) {
                   console.log(JSON.stringify(err));
-                res.json({"Error": 1, "Message": "Error while getting the data from Remote DataBase motherofall.org"});
+                res.json({"Error": 1, "Message": "Error while getting the data from Remote DataBase motherofall.org"+err});
             } else {
                 for (var i = 0; i < result.length; i++) {
                     products.push({
