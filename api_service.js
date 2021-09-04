@@ -4,43 +4,54 @@ var app = express();
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
-const {getProd,insertProd,updateProd,deleteProd} =require('./routes/product');
-const {getUser,insertUser,updateUser,changePass,deleteUser}=require('./routes/user');
+const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
+const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-var con = mysql.createConnection({
+var config = ({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
     port: process.env.PORT,
     database: 'YPA5lop9VD',
 });
-global.con=con;
-
 app.use(bodyparser.urlencoded({
     extended: true
 }));
 
-con.connect(function (err) {
-    if (!err)
-        console.log("DB connection succeded.");
-    else
-        console.log("DB connection failed \n" + JSON.stringify(err, undefined, 2));
-});
-app.get("/",(req,res)=>{
+function startConnection() {
+    console.error('CONNECTING');
+    var con = mysql.createConnection(config);
+    con.connect(function (err) {
+        if (err) {
+            console.error('CONNECT FAILED', err.code);
+            startConnection();
+        } else
+            console.log("DB connection succeded.");
+    });
+    con.on('error', function (err) {
+        if (err.fatal)
+            startConnection();
+    });
+}
+
+startConnection();
+global.con = con;
+
+app.get("/", (req, res) => {
     res.send("Hello world");
 })
 
 // CRUD Product
-app.get('/getProd',getProd);
-app.post('/insertProd',insertProd);
-app.put('/updateProd',updateProd);
-app.post('/deleteProd',deleteProd);
+app.get('/getProd', getProd);
+app.post('/insertProd', insertProd);
+app.put('/updateProd', updateProd);
+app.post('/deleteProd', deleteProd);
 // CRUD User
-app.get('/getUser',getUser);
-app.post('/insertUser',insertUser);
-app.put('/updateUser',updateUser);
-app.post('/changePass',changePass);
-app.post('/deleteUser',deleteUser);
+app.get('/getUser', getUser);
+app.post('/insertUser', insertUser);
+app.put('/updateUser', updateUser);
+app.post('/changePass', changePass);
+app.post('/deleteUser', deleteUser);
 
 
 app.listen(process.env.PORT || 8080, () => {
