@@ -21,6 +21,7 @@ app.use(bodyparser.urlencoded({
 function startConnection() {
     console.error('CONNECTING');
     var con = mysql.createConnection(config);
+    global.con=con;
     con.connect(function (err) {
         if (err) {
             console.error('CONNECT FAILED', err.code);
@@ -35,7 +36,6 @@ function startConnection() {
 }
 
 startConnection();
-global.con = con;
 
 app.get("/", (req, res) => {
     res.send("Hello world");
