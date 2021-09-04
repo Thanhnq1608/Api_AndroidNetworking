@@ -10,8 +10,8 @@ const {getUser,insertUser,updateUser,changePass,deleteUser}=require('./routes/us
 var con = mysql.createConnection({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
-    password: 'CZxjB0tcLv',
-    port: 3306,
+    password: 'CoEo4yDqo6',
+    port: process.env.PORT || 8080,
     database: 'YPA5lop9VD'
 });
 global.con=con;
