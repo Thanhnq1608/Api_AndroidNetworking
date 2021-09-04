@@ -6,7 +6,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             var products = [];
             if (err) {
-                throw console.log(JSON.stringify(err));
+                console.log(JSON.stringify(err));
                 res.json({"Error": 1, "Message": "Error while getting the data from Remote DataBase motherofall.org"});
             } else {
                 for (var i = 0; i < result.length; i++) {
