@@ -11,7 +11,7 @@ var config = ({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
-    port: process.env.PORT,
+    port: process.env.PORT ||8080,
     database: 'YPA5lop9VD',
 });
 app.use(bodyparser.urlencoded({
