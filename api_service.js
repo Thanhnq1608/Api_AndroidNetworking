@@ -8,17 +8,11 @@ const {getProd,insertProd,updateProd,deleteProd} =require('./routes/product');
 const {getUser,insertUser,updateUser,changePass,deleteUser}=require('./routes/user');
 
 var con = mysql.createConnection({
-    connectionLimit : 100,
-    waitForConnections : true,
-    queueLimit :0,
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
-    port: process.env.PORT || 8080,
+    port: process.env.PORT,
     database: 'YPA5lop9VD',
-    debug    :  true,
-    wait_timeout : 28800,
-    connect_timeout :10
 });
 global.con=con;
 
