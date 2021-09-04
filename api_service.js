@@ -1,6 +1,5 @@
 var mysql = require('mysql');
 var express = require('express');
-var fileUpload = require("express-fileupload");
 var app = express();
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
