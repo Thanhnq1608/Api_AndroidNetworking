@@ -1,5 +1,5 @@
-var mysql = require('mysql');
-var express = require('express');
+const mysql = require('mysql');
+const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
@@ -7,47 +7,46 @@ app.use(bodyparser.json());
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-// var config = ({
-//     host: '37.59.55.185',
-//     user: 'YPA5lop9VD',
-//     port:,
-//     password: 'CoEo4yDqo6',
-//     database: 'YPA5lop9VD',
-//     server: 'remotemysql.com',
-// });
-app.use(bodyparser.urlencoded({
-    extended: true
-}));
-// var con = mysql.createConnection(config);
-// global.con = con;
-// con.connect(function (err) {
-//     if (err) {
-//         console.error('CONNECT FAILED', err.code);
-//     } else {
-//         console.log("DB connection succeded.");
-//
-//     }
-// });
-
-var Client = mysql.Client;
-var con = new Client();
-
-con.host = '37.59.55.185';
-con.user = 'YPA5lop9VD';
-con.password = 'CoEo4yDqo6';
-con.database = 'YPA5lop9VD';
-
-app.use(bodyparser.urlencoded({
-    extended: true
-}));
-global.con = con;
-con.connect(function (err, results) {
-    if (err) {
-        console.log("ERROR: " + err.message);
-        throw err;
-    }
-    console.log("connected.");
+const config = ({
+    host: '37.59.55.185',
+    user: 'YPA5lop9VD',
+    port: 3306,
+    password: 'CoEo4yDqo6',
+    database: 'YPA5lop9VD',
 });
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+const con = mysql.createConnection(config);
+global.con = con;
+con.connect(function (err) {
+    if (err) {
+        console.error('CONNECT FAILED', err.code);
+    } else {
+        console.log("DB connection succeded.");
+
+    }
+});
+
+// var Client = mysql.Client;
+// var con = new Client();
+//
+// con.host = '37.59.55.185';
+// con.user = 'YPA5lop9VD';
+// con.password = 'CoEo4yDqo6';
+// con.database = 'YPA5lop9VD';
+//
+// app.use(bodyparser.urlencoded({
+//     extended: true
+// }));
+// global.con = con;
+// con.connect(function (err, results) {
+//     if (err) {
+//         console.log("ERROR: " + err.message);
+//         throw err;
+//     }
+//     console.log("connected.");
+// });
 
 app.get("/", (req, res) => {
     res.send("Hello world");
