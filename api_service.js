@@ -11,7 +11,7 @@ var config = ({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
-    port: process.env.PORT || 8080,
+    port: 3306,
     database: 'YPA5lop9VD',
     server: 'remotemysql.com',
 });
@@ -26,48 +26,49 @@ con.connect(function (err) {
     } else {
         console.log("DB connection succeded.");
 
-    }});
+    }
+});
 
 // app.get("/", (req, res) => {
 //     res.send("Hello world");
 // })
-    app.get('/', (req, res) => {
-        let sql = `select * from products`;
-        con.query(sql, (err, result) => {
-            var products = [];
-            if (err) {
-                console.log(JSON.stringify(err));
-                res.json({
-                    "Error": 1,
-                    "Message": "Error while getting the data from Remote DataBase motherofall.org" + err
+app.get('/', (req, res) => {
+    let sql = `select * from products`;
+    con.query(sql, (err, result) => {
+        var products = [];
+        if (err) {
+            console.log(JSON.stringify(err));
+            res.json({
+                "Error": 1,
+                "Message": "Error while getting the data from Remote DataBase motherofall.org" + err
+            });
+        } else {
+            for (var i = 0; i < result.length; i++) {
+                products.push({
+                    id: result[i].id,
+                    avatar: result[i].avatar,
+                    name: result[i].name,
+                    price: result[i].price,
+                    soLuongTon: result[i].soLuongTon,
+                    description: result[i].description
                 });
-            } else {
-                for (var i = 0; i < result.length; i++) {
-                    products.push({
-                        id: result[i].id,
-                        avatar: result[i].avatar,
-                        name: result[i].name,
-                        price: result[i].price,
-                        soLuongTon: result[i].soLuongTon,
-                        description: result[i].description
-                    });
-                }
-                res.send(JSON.stringify(products));
             }
-        })
-    },)
+            res.send(JSON.stringify(products));
+        }
+    })
+},)
 // CRUD Product
-    app.post('/insertProd', insertProd);
-    app.put('/updateProd', updateProd);
-    app.post('/deleteProd', deleteProd);
+app.post('/insertProd', insertProd);
+app.put('/updateProd', updateProd);
+app.post('/deleteProd', deleteProd);
 // CRUD User
-    app.get('/getUser', getUser);
-    app.post('/insertUser', insertUser);
-    app.put('/updateUser', updateUser);
-    app.post('/changePass', changePass);
-    app.post('/deleteUser', deleteUser);
+app.get('/getUser', getUser);
+app.post('/insertUser', insertUser);
+app.put('/updateUser', updateUser);
+app.post('/changePass', changePass);
+app.post('/deleteUser', deleteUser);
 
 
-    app.listen(process.env.PORT || 8080, () => {
-        console.log('Server started on port 3000..');
-    });
+app.listen(process.env.PORT || 3306, () => {
+    console.log('Server started on port 3000..');
+});
