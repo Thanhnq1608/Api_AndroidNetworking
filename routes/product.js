@@ -1,7 +1,24 @@
 const fs = require('fs');
 
 module.exports = {
-
+    getProd:(req,res)=>{
+        let sql = `select * from products`;
+        con.query(sql, (err, result) => {
+            var products = [];
+            if (err) throw err;
+            for (var i = 0; i < result.length; i++) {
+                products.push({
+                    id: result[i].id,
+                    avatar: result[i].avatar,
+                    name: result[i].name,
+                    price: result[i].price,
+                    soLuongTon: result[i].soLuongTon,
+                    description: result[i].description
+                });
+            }
+            res.send(JSON.stringify(products));
+        })
+    },
     insertProd: function (req, res, next) {
         var avatar = req.body.avatar;
         var name = req.body.name;

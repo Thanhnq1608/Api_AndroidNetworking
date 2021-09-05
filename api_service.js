@@ -29,35 +29,11 @@ con.connect(function (err) {
     }
 });
 
-// app.get("/", (req, res) => {
-//     res.send("Hello world");
-// })
-app.get('/', (req, res) => {
-    let sql = `select * from products`;
-    con.query(sql, (err, result) => {
-        var products = [];
-        if (err) {
-            console.log(JSON.stringify(err));
-            res.json({
-                "Error": 1,
-                "Message": "Error while getting the data from Remote DataBase motherofall.org" + err
-            });
-        } else {
-            for (var i = 0; i < result.length; i++) {
-                products.push({
-                    id: result[i].id,
-                    avatar: result[i].avatar,
-                    name: result[i].name,
-                    price: result[i].price,
-                    soLuongTon: result[i].soLuongTon,
-                    description: result[i].description
-                });
-            }
-            res.send(JSON.stringify(products));
-        }
-    })
-},)
+app.get("/", (req, res) => {
+    res.send("Hello world");
+})
 // CRUD Product
+app.get('/getProd', getProd);
 app.post('/insertProd', insertProd);
 app.put('/updateProd', updateProd);
 app.post('/deleteProd', deleteProd);
