@@ -3,18 +3,19 @@ const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
+const PORT = process.env.PORT || 3306;
 const dbConfig = require('./database/db.config');
 
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
 const config = ({
-    host       : dbConfig.host,
-    port       : dbConfig.port || 3306,
-    user       : dbConfig.user,
-    password   : dbConfig.password,
-    database   : dbConfig.database,
-    dialect    : dbConfig.dialect,
+    host       : '37.59.55.185',
+    user       : 'YPA5lop9VD',
+    port       : PORT,
+    password   : 'CoEo4yDqo6',
+    database   : 'YPA5lop9VD',
+    dialect    : "mysql",
     native     : true,
 });
 app.use(bodyparser.urlencoded({
@@ -45,7 +46,7 @@ app.put('/updateUser', updateUser);
 app.post('/changePass', changePass);
 app.post('/deleteUser', deleteUser);
 
-const PORT = process.env.PORT || 3306;
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}.`);
 });
