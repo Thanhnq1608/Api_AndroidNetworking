@@ -2,7 +2,7 @@ const fs = require('fs');
 
 module.exports = {
     getProd:(req,res)=>{
-        let sql = "SELECT * FROM products";
+        let sql = `select * from products`;
         con.query(sql, (err, result) => {
             if (err) console.log(err);
             res.send(JSON.stringify(result));
