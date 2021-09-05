@@ -11,7 +11,7 @@ var config = ({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
-    port: 3306,
+    port: process.env.PORT || 3306,
     database: 'YPA5lop9VD',
     server: 'remotemysql.com',
 });
