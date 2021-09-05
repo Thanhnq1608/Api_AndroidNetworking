@@ -12,7 +12,7 @@ const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./rou
 const config = ({
     host       : '37.59.55.185',
     user       : 'YPA5lop9VD',
-    port       : PORT,
+    port       : 3306,
     password   : 'CoEo4yDqo6',
     database   : 'YPA5lop9VD',
     dialect    : "mysql",
