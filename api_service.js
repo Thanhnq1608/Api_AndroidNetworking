@@ -10,12 +10,11 @@ const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product'
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
 const config = ({
-    host       : '37.59.55.185',
-    user       : 'YPA5lop9VD',
-    port       : 3306,
-    password   : 'CoEo4yDqo6',
-    database   : 'YPA5lop9VD',
-    dialect    : "mysql",
+    host       : dbConfig.host,
+    user       : dbConfig.user,
+    port       : PORT,
+    password   : dbConfig.password,
+    database   : dbConfig.database,
     native     : true,
 });
 app.use(bodyparser.urlencoded({
