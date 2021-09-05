@@ -24,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/Thanhnq1608/Api_AndroidNetworking/issues"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "engines": {
+    "node": "14.16.1"
+  },
   "homepage": "https://github.com/Thanhnq1608/Api_AndroidNetworking#readme"
 }
