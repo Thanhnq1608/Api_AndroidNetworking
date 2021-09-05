@@ -8,14 +8,14 @@ const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product'
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
 const config = ({
-    host        : '37.59.55.185',
-    user        : 'YPA5lop9VD',
-    port        : 3306,
-    password    : 'CoEo4yDqo6',
-    database    : 'YPA5lop9VD',
-    dialect     : "mysql",
-    native      : true,
-    pool        : { maxConnections: 50, maxIdleTime: 30},
+    "host"        : '37.59.55.185',
+    "user"        : 'YPA5lop9VD',
+    "port"        : 3306,
+    "password"    : 'CoEo4yDqo6',
+    "database"    : 'YPA5lop9VD',
+    "dialect"     : "mysql",
+    "native"      : true,
+    "pool"        : { maxConnections: 50, maxIdleTime: 30},
 });
 app.use(bodyparser.urlencoded({
     extended: true
