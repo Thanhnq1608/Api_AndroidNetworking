@@ -1,6 +1,7 @@
 var mysql = require('mysql');
 var express = require('express');
 var app = express();
+var port= process.env.PORT || 3306;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
@@ -11,7 +12,7 @@ var config = ({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
     password: 'CoEo4yDqo6',
-    port: process.env.PORT || 3306,
+    port: port,
     database: 'YPA5lop9VD',
     server: 'remotemysql.com',
 });
@@ -45,6 +46,6 @@ app.post('/changePass', changePass);
 app.post('/deleteUser', deleteUser);
 
 
-app.listen(process.env.PORT || 3306, () => {
+app.listen(port, () => {
     console.log('Server started on port 3000..');
 });
