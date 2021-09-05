@@ -1,32 +1,52 @@
 var mysql = require('mysql');
 var express = require('express');
 var app = express();
-var port= process.env.PORT || 3306;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-var config = ({
-    host: '37.59.55.185',
-    user: 'YPA5lop9VD',
-    password: 'CoEo4yDqo6',
-    database: 'YPA5lop9VD',
-    server: 'remotemysql.com',
-});
+// var config = ({
+//     host: '37.59.55.185',
+//     user: 'YPA5lop9VD',
+//     port:,
+//     password: 'CoEo4yDqo6',
+//     database: 'YPA5lop9VD',
+//     server: 'remotemysql.com',
+// });
 app.use(bodyparser.urlencoded({
     extended: true
 }));
-var con = mysql.createConnection(config);
-global.con = con;
-con.connect(function (err) {
-    if (err) {
-        console.error('CONNECT FAILED', err.code);
-    } else {
-        console.log("DB connection succeded.");
+// var con = mysql.createConnection(config);
+// global.con = con;
+// con.connect(function (err) {
+//     if (err) {
+//         console.error('CONNECT FAILED', err.code);
+//     } else {
+//         console.log("DB connection succeded.");
+//
+//     }
+// });
 
+var Client = mysql.Client;
+var con = new Client();
+
+con.host = '37.59.55.185';
+con.user = 'YPA5lop9VD';
+con.password = 'CoEo4yDqo6';
+con.database = 'YPA5lop9VD';
+
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+global.con = con;
+con.connect(function (err, results) {
+    if (err) {
+        console.log("ERROR: " + err.message);
+        throw err;
     }
+    console.log("connected.");
 });
 
 app.get("/", (req, res) => {
@@ -45,6 +65,6 @@ app.post('/changePass', changePass);
 app.post('/deleteUser', deleteUser);
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3306, () => {
     console.log('Server started on port 3000..');
 });

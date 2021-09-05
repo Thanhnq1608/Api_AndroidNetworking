@@ -1,3 +1,4 @@
+
 module.exports ={
     getUser:(req,res)=>{
         let sql = `select * from users`;
@@ -14,6 +15,7 @@ module.exports ={
                 });
             }
             res.send(JSON.stringify(users));
+            con.end;
         })
     },
     insertUser:function (req,res){
@@ -27,6 +29,7 @@ module.exports ={
         con.query(sql, function (err, result) {
             if (err) throw err;
             res.json({'status': 'succes', id: result.insertId});
+            con.end;
         })
     },
     updateUser:function (req,res){
@@ -35,6 +38,7 @@ module.exports ={
         con.query(sql,function (err, result,fields){
             if (err) throw err;
             res.json({status:"Updated successfully"});
+            con.end;
         })
     },
     changePass:function (req,res){
@@ -43,6 +47,7 @@ module.exports ={
         con.query(sql,function (err, result,fields){
             if (err) throw err;
             res.json({status:"Updated successfully"});
+            con.end;
         })
     },
     deleteUser:function (req,res){
@@ -51,6 +56,7 @@ module.exports ={
         con.query(sql,function (err, result,fields){
             if (err) throw err;
             res.json({status:"Deleted successfully"});
+            con.end;
         })
     }
 };

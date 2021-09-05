@@ -17,6 +17,7 @@ module.exports = {
                 });
             }
             res.send(JSON.stringify(products));
+            con.end;
         })
     },
     insertProd: function (req, res, next) {
@@ -31,6 +32,7 @@ module.exports = {
         con.query(sql, function (err, result) {
             if (err) throw err;
             res.json({'status': 'succes', id: result.insertId});
+            con.end;
         })
     },
     updateProd: function (req, res, next) {
@@ -39,6 +41,7 @@ module.exports = {
         con.query(sql, function (err, result, fields) {
             if (err) throw err;
             res.json({status: "Updated successfully"});
+            con.end;
         })
     },
     deleteProd: function (req, res, next) {
@@ -47,6 +50,7 @@ module.exports = {
         con.query(sql, function (err, result, fields) {
             if (err) throw err;
             res.json({status: "Deleted successfully"});
+            con.end;
         })
     }
 };

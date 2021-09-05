@@ -26,7 +26,11 @@
   },
   "keywords": [
     "example",
-    "heroku"
+    "heroku",
+    "nodejs",
+    "express",
+    "mysql",
+    "restapi"
   ],
   "engines": {
     "node": "14.16.1",
