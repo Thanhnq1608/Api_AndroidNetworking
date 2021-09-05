@@ -3,8 +3,18 @@ module.exports ={
     getUser:(req,res)=>{
         let sql = `select * from users`;
         con.query(sql, (err, result) => {
+            var users = [];
             if (err) throw err;
-            res.send(JSON.stringify(result));
+            for (var i = 0; i < result.length; i++) {
+                users.push({
+                    id: result[i].id,
+                    username: result[i].username,
+                    password: result[i].password,
+                    phonenumber: result[i].phonenumber,
+                    gmail: result[i].gmail,
+                });
+            }
+            res.send(JSON.stringify(users));
             con.end;
         })
     },

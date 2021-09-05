@@ -4,19 +4,8 @@ module.exports = {
     getProd:(req,res)=>{
         let sql = "SELECT * FROM products";
         con.query(sql, (err, result) => {
-            var products = [];
             if (err) console.log(err);
-            for (var i = 0; i < result.length; i++) {
-                products.push({
-                    id: result[i].id,
-                    avatar: result[i].avatar,
-                    name: result[i].name,
-                    price: result[i].price,
-                    soLuongTon: result[i].soLuongTon,
-                    description: result[i].description
-                });
-            }
-            res.send(JSON.stringify(products));
+            res.send(JSON.stringify(result));
             con.end;
         })
     },
