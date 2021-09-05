@@ -5,7 +5,7 @@ module.exports = {
         let sql = "SELECT * FROM products";
         con.query(sql, (err, result) => {
             var products = [];
-            if (err) throw err;
+            if (err) console.log(err);
             for (var i = 0; i < result.length; i++) {
                 products.push({
                     id: result[i].id,
