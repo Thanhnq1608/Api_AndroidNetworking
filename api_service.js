@@ -13,6 +13,7 @@ var config = ({
     password: 'CoEo4yDqo6',
     port: process.env.PORT || 8080,
     database: 'YPA5lop9VD',
+    server: 'remotemysql.com',
 });
 app.use(bodyparser.urlencoded({
     extended: true
