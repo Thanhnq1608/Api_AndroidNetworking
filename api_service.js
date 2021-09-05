@@ -20,9 +20,9 @@ app.use(bodyparser.urlencoded({
 
 function startConnection() {
     console.error('CONNECTING');
-    con = mysql.createPool(config);
+    var con = mysql.createConnection(config);
     global.con=con;
-    con.getConnection(function (err) {
+    con.connect(function (err) {
         if (err) {
             console.error('CONNECT FAILED', err.code);
             startConnection();
