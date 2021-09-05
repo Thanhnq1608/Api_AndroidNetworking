@@ -15,7 +15,6 @@ const config = ({
     "database"    : 'YPA5lop9VD',
     "dialect"     : "mysql",
     "native"      : true,
-    "pool"        : { maxConnections: 50, maxIdleTime: 30},
 });
 app.use(bodyparser.urlencoded({
     extended: true
