@@ -25,7 +25,7 @@ con.connect(function (err) {
     } else {
         console.log("DB connection succeded.");
 
-    }
+    }});
 
 // app.get("/", (req, res) => {
 //     res.send("Hello world");
