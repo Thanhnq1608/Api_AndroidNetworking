@@ -36,11 +36,11 @@ function startConnection() {
 }
 
 startConnection();
-
-app.get("/", (req, res) => {
-    res.send("Hello world");
-})
-app.get( '/getProd',(req, res) => {
+//
+// app.get("/", (req, res) => {
+//     res.send("Hello world");
+// })
+app.get( '/',(req, res) => {
     let sql = `select * from products`;
     con.query(sql, (err, result) => {
         var products = [];
