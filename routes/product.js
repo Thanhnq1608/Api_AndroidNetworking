@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 module.exports = {
     getProd:(req,res)=>{
         let sql = `select * from products`;
@@ -9,14 +7,14 @@ module.exports = {
             con.end;
         })
     },
-    insertProd: function (req, res, next) {
+    insertProd: function (req, res) {
         var avatar = req.body.avatar;
         var name = req.body.name;
         var price = req.body.price;
-        var soLuongTon = req.body.soLuongTon;
+        var inventory = req.body.inventory;
         var description = req.body.description;
 
-        var sql = `INSERT INTO products(avatar,name,price,soLuongTon,description) VALUES("${avatar}","${name}","${price}","${soLuongTon}","${description}")`;
+        var sql = `INSERT INTO products(avatar,name,price,inventory,description) VALUES("${avatar}","${name}","${price}","${inventory}","${description}")`;
 
         con.query(sql, function (err, result) {
             if (err) throw err;
@@ -25,7 +23,7 @@ module.exports = {
         })
     },
     updateProd: function (req, res, next) {
-        var sql = "UPDATE products SET price='" + req.body.price + "',soLuongTon='" + req.body.soLuongTon + "',description='" + req.body.description + "' WHERE id=" + req.body.id + "";
+        var sql = "UPDATE products SET price='" + req.body.price + "',inventory='" + req.body.inventory + "',description='" + req.body.description + "' WHERE id=" + req.body.id + "";
 
         con.query(sql, function (err, result, fields) {
             if (err) throw err;
