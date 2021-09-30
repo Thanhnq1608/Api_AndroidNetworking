@@ -21,11 +21,11 @@ app.use(bodyparser.urlencoded({
     extended: true
 }));
 const con = mysql.createConnection({
-    host: '52.74.77.8',
-    user: 'sql6440785',
-    password: 'k4h2rQmBBn',
+    host: '37.59.55.185',
+    user: 'YPA5lop9VD',
+    password: 'CoEo4yDqo6',
     port: 3306,
-    database: 'sql6440785',
+    database: 'YPA5lop9VD',
 });
 global.con = con;
 con.connect(function (err) {
