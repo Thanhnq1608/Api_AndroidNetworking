@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const express = require('express');
 var app = express();
-var port=process.env.PORT || 3000;
+var port = process.env.PORT ||3000 ;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 // const dbConfig = require('./database/db.config');
@@ -9,16 +9,24 @@ app.use(bodyparser.json());
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-const config = ({
-    host       : 'localhost',
-    username   : 'id17174209_asm_android_networking',
-    password   : 'Quang.Thanh123',
-    dbname   : 'id17174209_store_manager',
-});
+// const config = ({
+//     server: 'sql6.freemysqlhosting.net',
+//     name: 'sql6440785',
+//     username: 'sql6440785',
+//     password: 'k4h2rQmBBn',
+//     port: 3306,
+//     database: 'sql6440785',
+// });
 app.use(bodyparser.urlencoded({
     extended: true
 }));
-const con = mysql.createConnection(config);
+const con = mysql.createConnection({
+    host: '52.74.77.8',
+    user: 'sql6440785',
+    password: 'k4h2rQmBBn',
+    port: 3306,
+    database: 'sql6440785',
+});
 global.con = con;
 con.connect(function (err) {
     if (err) {
@@ -45,5 +53,5 @@ app.post('/deleteUser', deleteUser);
 
 
 app.listen(port, () => {
-    console.log(`Server started on port: ${port}`);
+    console.log(`Server started on port: http://localhost:${port}`);
 });
