@@ -11,10 +11,11 @@ module.exports ={
     insertUser:function (req,res){
         var username=req.body.username;
         var password = req.body.password;
+        var position = req.body.position;
         var phonenumber = req.body.phonenumber;
         var gmail = req.body.gmail;
 
-        var sql = `INSERT INTO users(username,password,phonenumber,gmail) VALUES("${username}","${password}","${phonenumber}","${gmail}")`;
+        var sql = `INSERT INTO users(username,password,position,phonenumber,gmail) VALUES("${username}","${password}","${position}","${phonenumber}","${gmail}")`;
 
         con.query(sql, function (err, result) {
             if (err) throw err;
@@ -23,7 +24,7 @@ module.exports ={
         })
     },
     updateUser:function (req,res){
-        var sql ="UPDATE users SET password='"+req.body.password+"',phonenumber='"+req.body.phonenumber+"',gmail='"+req.body.gmail+"' WHERE id="+req.body.id+"";
+        var sql ="UPDATE users SET password='"+req.body.password+"',position='"+req.body.position+"',phonenumber='"+req.body.phonenumber+"',gmail='"+req.body.gmail+"' WHERE id="+req.body.id+"";
 
         con.query(sql,function (err, result,fields){
             if (err) throw err;
