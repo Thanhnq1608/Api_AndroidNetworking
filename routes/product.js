@@ -18,7 +18,7 @@ module.exports = {
 
         con.query(sql, function (err, result) {
             if (err) throw err;
-            res.json({'status': 'succes', id: result.insertId});
+            res.json({status: 'Insert Success'});
             con.end;
         })
     },
