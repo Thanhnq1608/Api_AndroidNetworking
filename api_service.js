@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const express = require('express');
 var app = express();
-var port = process.env.PORT ;
+var port = process.env.PORT || 3000;
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 // const dbConfig = require('./database/db.config');
