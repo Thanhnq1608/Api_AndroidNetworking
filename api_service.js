@@ -1,8 +1,6 @@
 const mysql = require('mysql');
 const express = require('express');
 var app = express();
-var port = process.env.port;
-var host = '192.168.1.4';
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 
@@ -44,6 +42,6 @@ app.post('/changePass', changePass);
 app.post('/deleteUser', deleteUser);
 
 
-app.listen(port, async() => {
+app.listen(process.env.port, async() => {
     console.log(`Server started on port: http://localhost:${port}`);
 });
