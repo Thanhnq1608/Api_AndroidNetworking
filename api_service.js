@@ -42,6 +42,6 @@ app.post('/changePass', changePass);
 app.post('/deleteUser', deleteUser);
 
 
-app.listen(process.env.port, async() => {
+app.listen(process.env.PORT || 3000, async() => {
     console.log(`Server started on port: http://localhost:${port}`);
 });
