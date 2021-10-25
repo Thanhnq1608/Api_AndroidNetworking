@@ -1,22 +1,14 @@
 const mysql = require('mysql');
 const express = require('express');
 var app = express();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT;
+var host = '192.168.1.4';
 const bodyparser = require('body-parser');
 app.use(bodyparser.json());
-// const dbConfig = require('./database/db.config');
 
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-// const config = ({
-//     server: 'sql6.freemysqlhosting.net',
-//     name: 'sql6440785',
-//     username: 'sql6440785',
-//     password: 'k4h2rQmBBn',
-//     port: 3306,
-//     database: 'sql6440785',
-// });
 app.use(bodyparser.urlencoded({
     extended: true
 }));
