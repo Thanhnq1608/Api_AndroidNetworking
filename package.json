@@ -13,7 +13,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "predev":"fuser -k 4000/tcp && echo 'Terminated' || echo 'Nothing was running on the PORT'",
     "start": "node api_service.js"
   },
   "repository": {
