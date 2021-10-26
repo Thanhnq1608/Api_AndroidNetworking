@@ -7,9 +7,6 @@ app.use(bodyparser.json());
 const {getProd, insertProd, updateProd, deleteProd} = require('./routes/product');
 const {getUser, insertUser, updateUser, changePass, deleteUser} = require('./routes/user');
 
-app.use(bodyparser.urlencoded({
-    extended: true
-}));
 const con = mysql.createConnection({
     host: '37.59.55.185',
     user: 'YPA5lop9VD',
@@ -26,6 +23,11 @@ con.connect(function (err) {
 
     }
 });
+
+app.use(bodyparser.urlencoded({
+    extended: true
+}));
+
 app.get("/", (req, res) => {
     res.send("Hello world");
 })
@@ -43,5 +45,5 @@ app.post('/deleteUser', deleteUser);
 
 
 app.listen(process.env.PORT || 3000, async() => {
-    console.log(`Server started on port: http://localhost:${port}`);
+    console.log(`Server started`);
 });
